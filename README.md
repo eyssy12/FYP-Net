@@ -3,4 +3,12 @@ Final year project using the .NET stack.
 
 Project consists of a Web application and an XMPP messaging server.
 
-Technologies used are .NET Core, XMPP to communicate with Google Cloud (XMPP is deprecated as of last year), EntityFramework 7, EF6 for messaging server, Web API.
+Technologies used are:
+
+* .NET Core MVC
+* .NET Core Web API.
+* EntityFramework 7
+* OAuth - for client authentication
+* XMPP to communicate with Google Cloud (XMPP is deprecated as of last year)
+* EF6 - (.NET Framework 4.6.1) XMPP Messaging server is able to connect to
+* XUnit - for unit testing
