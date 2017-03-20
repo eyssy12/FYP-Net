@@ -1,0 +1,418 @@
+﻿@using CMS.Dashboard.Test.ViewModels.Extensions
+@using System.Security.Claims
+
+<!DOCTYPE html>
+
+<html ng-app="fypcmsApp">
+<head>
+    <title>@ViewData["Title"]</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Ladda buttons -->
+    <link rel="stylesheet" href="~/lib/ladda-bootstrap/dist/ladda-themeless.min.css" />
+    <!-- Text Angular -->
+    <link rel="stylesheet" href="~/lib/textAngular/dist/textAngular.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/css/AdminLTE/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/css/AdminLTE/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="~/lib/iCheck/skins/square/blue.css" />
+    <!-- Site css -->
+    <link rel="stylesheet" href="~/css/site.css">
+
+    <link rel="stylesheet" href="~/lib/angularjs-datepicker/src/css/angular-datepicker.css" />
+    <link rel="stylesheet" href="~/lib/isteven-angular-multiselect/isteven-multi-select.css" />
+
+    @if (IsSectionDefined("stylesheets"))
+    {
+        @RenderSection("stylesheets", required: false)
+    }
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+    <!-- Angular -->
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular-filter/dist/angular-filter.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular/"></script>
+    <script type="text/javascript" src="~/lib/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed" ng-cloak>
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a asp-controller="Home" asp-action="Index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>F</b>YP</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>FYP</b>CMS</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation" ng-controller="NavbarController">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <!-- Notifications: style can be found in dropdown.less -->
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span ng-show="notifications.count" class="label label-warning"> {{ notifications.count }} </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">{{ notifications.status }}</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+                                        <li ng-repeat="notification in notifications.data">
+                                            <a href="#">
+                                                {{ notification.body }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li ng-if="notifications.count" class="footer"><a href="#">View all</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/img/placeholder.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">
+                                    @User.GetUserName()
+                                </span>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/img/placeholder.jpg" class="img-circle" alt="User Image">
+                                    <p>
+                                        @User.FullName()
+                                        @if (User.IsInRole("Student"))
+                                        {
+                                            <small>Enrolled in @User.EnrollmentDate()</small>
+                                        }
+                                        else if (User.IsInRole("Lecturer"))
+                                        {
+                                            <small>Lecturer since @User.LecturerHireDate()</small>
+                                        }
+                                        else if (User.IsInRole("Admin"))
+                                        {
+                                            <small>Administrator</small>
+                                        }
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <form asp-controller="Account" asp-action="LogOff" method="post">
+                                        <div class="pull-right">
+                                            <button class="btn btn-default btn-flat">Sign out</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar" ng-controller="SidebarController">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/img/placeholder.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info sidebar-text-truncate">
+                        <p>Hello, </p>
+                        <p>@User.FirstName()</p>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form class="sidebar-form">
+                    <div class="input-group">
+                         <!-- formnovalidate removes the error where angular-auto-validate wants the control to be part of form-group class -->
+                        <input type="text" name="q" class="form-control" placeholder="Search..." ng-model="sidebar.searchText" novalidate="novalidate" formnovalidate>
+                        <span class="input-group-btn">
+                            <button id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">NAVIGATION</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="@(ViewBag.NavigationPage == "Home" ? "active" : "")">
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="treeview @(ViewBag.NavigationPage == "Configuration" ? "active" : "")">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i>
+                                <span>Configuration</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@(ViewBag.NavigationPageTreeView == "Department" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Department"><i class="fa fa-circle-o"></i>Department</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Course" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Course"><i class="fa fa-circle-o"></i>Course</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Semester" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Semester"><i class="fa fa-circle-o"></i>Semester</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Module" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Module"><i class="fa fa-circle-o"></i>Module</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Class" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Class"><i class="fa fa-circle-o"></i>Class</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Person" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Person"><i class="fa fa-circle-o"></i>Person</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Student" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Student"><i class="fa fa-circle-o"></i>Student</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Lecturer" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Lecturer"><i class="fa fa-circle-o"></i>Lecturer</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Account" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Account"><i class="fa fa-circle-o"></i>Account</a>
+                                </li>
+                                <li class="@(ViewBag.NavigationPageTreeView == "Timetables" ? "active" : "")">
+                                    <a asp-controller="Configuration" asp-action="Timetables"><i class="fa fa-circle-o"></i>Timetables</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("Student"))
+                    {
+                        <li class="@(ViewBag.NavigationPage == "Home" ? "active" : "")">
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="@(ViewBag.NavigationPage == "Modules" ? "active" : "")">
+                            <a asp-controller="Student" asp-action="Modules">
+                                <i class="fa fa-book"></i>
+                                <span>Modules</span>
+                            </a>
+                        </li>
+                        <li class="@(ViewBag.NavigationPage == "Classmates" ? "active" : "")">
+                            <a asp-controller="Student" asp-action="Classmates">
+                                <i class="fa fa-laptop"></i>
+                                <span>Classmates</span>
+                            </a>
+                        </li>
+                        <li class="@(ViewBag.NavigationPage == "Timetables" ? "active" : "")">
+                            <a asp-controller="Student" asp-action="Timetables">
+                                <i class="fa fa-calendar"></i> <span>Timetables</span>
+                            </a>
+                        </li>
+                    }
+                    else if (User.IsInRole("Lecturer"))
+                    {
+
+                        <li class="@(ViewBag.NavigationPage == "Home" ? "active" : "")">
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="treeview @(ViewBag.NavigationPage == "Modules" ? "active" : "")">
+                            <a asp-controller="Lecturer" asp-action="Modules">
+                                <i class="fa fa-book"></i>
+                                <span>Modules</span>
+                            </a>
+                        </li>
+                        <li class="@(ViewBag.NavigationPage == "Timetables" ? "active" : "")">
+                            <a asp-controller="Lecturer" asp-action="Timetables">
+                                <i class="fa fa-calendar"></i> <span>Timetables</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+            </section>
+            <!-- /.sidebar -->
+
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            @if (ViewBag.CleanHeader == true)
+            {
+            }
+            else
+            {
+                <section class="content-header">
+                    <h1>
+                        @ViewBag.NavigationPage
+                    </h1>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @if (string.IsNullOrWhiteSpace(ViewBag.NavigationPageTreeView))
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Configuration" asp-action="Home"><i class="fa fa-home"></i>Home</a></li>
+                                <li class="active">@ViewBag.NavigationPage</li>
+                            </ol>
+                        }
+                        else
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Configuration" asp-action="Home"><i class="fa fa-home"></i>Home</a></li>
+                                <li>@ViewBag.NavigationPage</li>
+                                <li class="active">@ViewBag.NavigationPageTreeView</li>
+                            </ol>
+
+                        }
+
+                    }
+                    else if (User.IsInRole("Student"))
+                    {
+
+                        @if (string.IsNullOrWhiteSpace(ViewBag.NavigationPageTreeView))
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Student" asp-action="Home"><i class="fa fa-home"></i>Home</a></li>
+                                <li class="active">@ViewBag.NavigationPage</li>
+                            </ol>
+                        }
+                        else
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Student" asp-action="Home"><i class="fa fa-home"></i> Home</a></li>
+                                <li>@ViewBag.NavigationPage</li>
+                                <li class="active">@ViewBag.NavigationPageTreeView</li>
+                            </ol>
+
+                        }
+                    }
+                    else if (User.IsInRole("Lecturer"))
+                    {
+                        @if (string.IsNullOrWhiteSpace(ViewBag.NavigationPageTreeView))
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Lecturer" asp-action="Home"><i class="fa fa-home"></i>Home</a></li>
+                                <li class="active">@ViewBag.NavigationPage</li>
+                            </ol>
+                        }
+                        else
+                        {
+                            <ol class="breadcrumb">
+                                <li><a asp-controller="Lecturer" asp-action="Home"><i class="fa fa-home"></i> Home</a></li>
+                                <li>@ViewBag.NavigationPage</li>
+                                <li class="active">@ViewBag.NavigationPageTreeView</li>
+                            </ol>
+
+                        }
+                    }
+                </section>
+            }
+
+            <!-- Main content -->
+            <section class="content">
+
+                @RenderBody()
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                </div><!-- /.tab-pane -->
+            </div>
+        </aside><!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+
+    </div><!-- ./wrapper -->
+
+    <script type="text/javascript" src="~/lib/ngAutocomplete/src/ngAutocomplete.js"></script>
+
+    <script type="text/javascript" src="~/lib/isteven-angular-multiselect/isteven-multi-select.js"></script>   
+
+    <script type="text/javascript" src="~/lib/textAngular/dist/textAngular.js"></script>
+    <script type="text/javascript" src="~/lib/textAngular/dist/textAngularSetup.js"></script>
+    <script type="text/javascript" src="~/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="~/lib/textAngular/dist/textAngular-rangy.min.js"></script>
+
+    <!-- Angular Auto Validate -->
+    <script type="text/javascript" src="~/lib/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+    <!-- Bootbox -->
+    <script type="text/javascript" src="~/lib/bootbox/bootbox.js"></script>
+    <script type="text/javascript" src="~/lib/ngBootbox/dist/ngBootbox.min.js"></script>
+    <!-- FastClick -->
+    <script type="text/javascript" src="~/lib/fastclick/lib/fastclick.js"></script>
+    <!-- SlimScroll -->
+    <script type="text/javascript" src="~/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- Ladda -->
+    <script type="text/javascript" src="~/lib/ladda-bootstrap/dist/spin.min.js"></script>
+    <script type="text/javascript" src="~/lib/ladda-bootstrap/dist/ladda.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular-ladda/dist/angular-ladda.min.js"></script>
+    <!-- FullCalendar-->
+    <script type="text/javascript" src="~/lib/angular-ui-calendar/src/calendar.js"></script>
+    <!-- iCheck -->
+    <script type="text/javascript" src="~/lib/iCheck/icheck.min.js"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="~/js/AdminLTE/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script type="text/javascript" src="~/js/AdminLTE/demo.js"></script>
+    <!-- FYPCMS Angular App-->
+    <script type="text/javascript" src="~/js/site.js"></script> <!-- site.js has to be ahead of all specific angular controller files-->
+    <script type="text/javascript" src="~/js/Angular/app.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/AccountService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/SidebarService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Controllers/SidebarController.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Controllers/NavbarController.js"></script>
+    <!-- Custom JS -->
+
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

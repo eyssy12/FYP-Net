@@ -1,0 +1,118 @@
+﻿@using CMS.Dashboard.Test.ViewModels.Extensions
+@using System.Security.Claims
+@{
+    ViewBag.Title = "CMS Dashboard";
+    ViewBag.NavigationPage = "Home";
+}
+<div class="row" ng-controller="NewsController">
+    @if (User.IsInRole("Admin") || User.IsInRole("Lecturer"))
+    {
+        <div class="col-md-12">
+            <button type="button" class="btn btn-flat btn-primary" data-toggle="modal" data-target="#newsModal" ng-click="prepareModal()">
+                Create a News Post
+            </button>
+        </div>
+    }
+    <div class="col-md-8 col-md-offset-2" ng-repeat="newsPost in news | filter:sidebar.searchText">
+        <!-- Box Comment -->
+        <div class="box box-primary box-widget">
+            <div class="box-header with-border">
+                <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="~/img/placeholder.jpg" alt="User Image">
+                    <span class="username" ng-model="Title"><a href="#">{{ newsPost.Title }}</a></span>
+                    <span class="description">{{ preparePostedBy(newsPost) }}</span>
+                    <span class="description">{{ preparePostageTime(newsPost) }}</span>
+                </div>
+                <!-- /.user-block -->
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" data-trigger="hover" ng-click="determineCollapseBoxTooltipText(newsPost)" data-original-title="{{ newsPost.tooltip }}">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Lecturer"))
+                    {
+                        <button type="button" class="btn btn-box-tool" ng-click="deleteNewsPost(newsPost)" data-toggle="tooltip" data-original-title="Delete">
+                            <i class="fa fa-remove"></i>
+                        </button>
+                    }
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div ta-bind ng-model="newsPost.Body"></div>
+            </div>
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+    @if (User.IsInRole("Admin") || User.IsInRole("Lecturer"))
+    {
+            <!-- Modal -->
+        <div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper">
+                <div class="modal-lg vertical-align-center">
+                    <div class="modal-content">
+                        <form name="actionForm" class="form-horizontal" ng-submit="createNewsPost(actionForm)">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    News Post
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" placeholder="Title" ng-model="postTitle">
+                                    <div class="text-danger" ng-show="validTitle == false">Title cannot be less than {{ minTitleLength }} characters long</div>
+                                </div>
+                                <div class="panel">
+                                    <label>News contents</label>
+                                    <div text-angular ta-toolbar="[
+                                                ['h1','h2','h3', 'h3','h4','h5','h6'],
+                                                ['ul', 'ol'],
+                                                ['quote','bold','italics','underline','strikeThrough'],
+                                                ['html','undo', 'redo', 'clear'],
+                                                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent'],
+                                                ['wordcount', 'charcount']
+                                                ]"
+                                                    ng-model="htmlData">
+                                    </div>
+                                    <div class="text-danger" ng-show="validHtmlData == false">Post contents cannot be less than {{ minHtmlDataLength }} characters long</div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Discard</button>
+                                <button type="submit"
+                                        class="btn btn-primary btn-flat ladda-button"
+                                        ladda="newNewsPostLoading"
+                                        data-style="slide-up">
+                                    <span class="ladda-label">Create</span>
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <!-- Moment.js -->
+    <script type="text/javascript" src="~/lib/momentjs/min/moment.min.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/NewsService.js"></script>
+    <!-- Angular custom -->
+    @if (User.IsInRole("Admin") || User.IsInRole("Lecturer"))
+    {
+        <script type="text/javascript" src="~/js/Angular/Controllers/Common/NewsController.js"></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/js/Angular/Controllers/Student/NewsController.js"></script>
+    }
+}

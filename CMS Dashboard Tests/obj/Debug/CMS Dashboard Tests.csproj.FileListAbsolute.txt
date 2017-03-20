@@ -1,0 +1,5 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Dashboard Tests\bin\Debug\CMS.Dashboard.Tests.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Dashboard Tests\bin\Debug\CMS.Dashboard.Tests.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Dashboard Tests\obj\Debug\CMS Dashboard Tests.csprojResolveAssemblyReference.cache
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Dashboard Tests\obj\Debug\CMS.Dashboard.Tests.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Dashboard Tests\obj\Debug\CMS.Dashboard.Tests.pdb

@@ -1,0 +1,18 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\CMS.Entity.Framework.Data.Library.dll.config
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\CMS.Entity.Framework.Data.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\CMS.Entity.Framework.Data.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\CMS.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\EntityFramework.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\Ninject.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\NodaTime.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\CMS.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\EntityFramework.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\Ninject.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\bin\Debug\NodaTime.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\obj\Debug\CMS Entity Framework Data Library.csprojResolveAssemblyReference.cache
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\obj\Debug\CMS.Entity.Framework.Data.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Entity Framework Data Library\obj\Debug\CMS.Entity.Framework.Data.Library.pdb

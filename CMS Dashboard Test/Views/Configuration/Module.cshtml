@@ -1,0 +1,226 @@
+﻿@{
+    ViewData["Title"] = "Configuration - Module";
+    ViewBag.NavigationPage = "Configuration";
+    ViewBag.NavigationPageTreeView = "Module";
+}
+
+<div class="box" ng-controller="ModuleController">
+    <!-- /.box-header -->
+    <div class="box-header with-border">
+        <button type="button" class="btn btn-box-tool" ng-click="onGet()">
+            <i class="fa fa-2x fa-refresh" data-toggle="tooltip" data-original-title="Refresh"></i>
+        </button>
+        <h2 class="box-title">Modules</h2>
+    </div>
+    <!-- form start -->
+    <div class="box-body">
+        <div class="form-group">
+            <form name="courseForm" novalidate="novalidate">
+                <button class="btn btn-flat btn-primary btn-flat" data-toggle="modal" data-target="#moduleModal" ng-click="prepareModal('Create', null)">
+                    <i class="fa fa-plus"></i>
+                    Create
+                </button>
+                <button class="btn btn-warning btn-flat" ng-model="selectedForDeletion" ng-disabled="!selectedForDeletion" 
+                        ng-bootbox-confirm="Are you sure you want to delete the selected module(s)?"
+                        ng-bootbox-confirm-action="removeModules()">
+                    <i class="fa fa-remove"></i>
+                    Delete
+                </button>
+                <div ng-switch="statusMessage.type">
+                    <div class="text-success" ng-switch-when="Success">
+                        <h3>
+                            {{ statusMessage.message }}
+                        </h3>
+                    </div>
+                    <div class="text-warning" ng-switch-when="Error">
+                        <h3>
+                            {{ statusMessage.message }}
+                        </h3>
+                    </div>
+                    <div ng-switch-default>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="form-group">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 50px">#</th>
+                        <th style="width: 40px">
+                            <input type="checkbox" class="icheckbox_flat-green" data-toggle="tooltip" data-original-title="Select All" ng-model="selectedAll" ng-click="selectAll()">
+                        </th>
+                        <th style="width: 80px"></th>
+                        <th style="width: 50px">Id</th>
+                        <th>Name</th>
+                        <th>For Course</th>
+                        <th>Credits</th>
+                        <th>Module Type</th>
+                        <th>Semester No.</th>
+                        <th># Lecturers</th>
+                        <th># Students</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="module in modules | filter:sidebar.searchText">
+                    <td>
+                        {{ $index + 1 }}
+                    </td>
+                    <td>
+                        <input type="checkbox" class="icheckbox_flat-green" ng-model="module.isSelected" ng-click="checkSelected()">
+                    </td>
+                    <td>
+                        <div class="box-tools pull-left">
+                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#moduleModal" ng-click="prepareModal('Modify', module)">
+                                <i class="fa fa-edit" data-toggle="tooltip" data-original-title="Modify"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-original-title="Delete" ng-click="onDelete(module, $index)">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </div>
+                    </td>
+                    <td>
+                        {{ module.Id }}
+                    </td>
+                    <td>
+                        {{ module.Name }}
+                    </td>
+                    <td>
+                        {{ module.Semester.Course.Name }}
+                    </td>
+                    <td>
+                        {{ module.Credits }}
+                    </td>
+                    <td>
+                        {{ getModuleTypeAsString(module.ModuleType) }}
+                    </td>
+                    <td>
+                        {{ module.Semester == null ? "No semester assigned" : module.Semester.Number }}
+                    </td>
+                    <td>
+                        {{ module.LecturerModules.length }}
+                    </td>
+                    <td>
+                        {{ module.StudentModules.length }}
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-flat btn-primary btn-flat" ng-click="onGet()">Get Modules</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <form name="actionForm" novalidate="novalidate" class="form-horizontal" ng-submit="onCreateModifyFormSubmit(actionForm)">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    @ViewBag.NavigationPageTreeView - {{ action }}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="control-label">Course</label>
+                                        <div>
+                                            <select class="form-control" ng-model="selectedCourseForModule" ng-change="prepareSemestersForModule()" ng-options="course.Name for course in courses track by course.Id"></select>
+                                        </div>
+                                    </div>
+                                    <div ng-show="selectedCourseForModule != undefined">
+                                        <div class="form-group">
+                                            <label class="control-label">Semester No.</label>
+                                            <div>
+                                                <select class="form-control" ng-model="tempModule.Semester" ng-change="changeTempModule()" ng-options="semester.Number for semester in courseSemesters track by semester.Id" ng-required="true"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Name</label>
+                                            <div ng-switch="action">
+                                                <div ng-switch-when="Create">
+                                                    <input type="text" class="form-control" placeholder="Module Name" ng-model="tempModule.Name" ng-minlength="6" ng-required="true">
+                                                </div>
+                                                <div ng-switch-when="Modify">
+                                                    <input type="text" class="form-control" placeholder="Module Name" ng-model="tempModule.Name" ng-value="selectedModule.Name" ng-minlength="6" ng-required="true">
+                                                </div>
+                                                <div ng-switch-default>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Credits</label>
+                                            <div ng-switch="action">
+                                                <div ng-switch-when="Create">
+                                                    <input type="number" class="form-control" placeholder="Module Credits" ng-model="tempModule.Credits" min="20" ng-required="true">
+                                                </div>
+                                                <div ng-switch-when="Modify">
+                                                    <input type="number" class="form-control" placeholder="Module Credits" ng-model="tempModule.Credits" ng-value="selectedModule.Credits" min="20" ng-required="true">
+                                                </div>
+                                                <div ng-switch-default>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Module Type</label>
+                                            <div>
+                                                <select class="form-control" ng-required="true" ng-model="tempModule.ModuleType" ng-options="moduleType.Id as moduleType.Value for moduleType in moduleTypes"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Select Lecturers</label>
+                                            <div isteven-multi-select
+                                                 input-model="lecturersMultiSelect"
+                                                 output-model="lecturersSelected"
+                                                 button-label="name"
+                                                 item-label="name"
+                                                 tick-property="ticked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="modal-footer">
+                                <div ng-switch="action">
+                                    <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal" ng-click="clearSelectedCourse(actionForm)">Discard</button>
+                                    <div ng-switch-when="Create">
+                                        <button type="submit" class="btn btn-flat btn-primary" tabindex="1">Create</button>
+                                    </div>
+                                    <div ng-switch-when="Modify">
+                                        <button type="submit" class="btn btn-flat btn-primary" tabindex="2">Modify</button>
+                                    </div>
+                                    <div ng-switch-default>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal -->
+    </div>
+    <div class="overlay" ng-show="submitting">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+
+@section Scripts{
+
+    <!-- iCheck -->
+    <script type="text/javascript" src="~/lib/iCheck/icheck.min.js"></script>
+
+    <!-- Angular custom -->
+
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/EnumerationsService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/SemesterService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/LecturerService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/ModuleService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Controllers/ModuleController.js"></script>
+}

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56E80469-25FD-4413-8E0F-1F19FFFDA771}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Messaging.Server.Library</RootNamespace>
+    <AssemblyName>CMS.Messaging.Server.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="agsXMPP, Version=1.1.1.0, Culture=neutral, PublicKeyToken=ff839b81f1debe86, processorArchitecture=MSIL">
+      <HintPath>..\packages\agsXMPP.1.1.1.0\lib\agsXMPP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\GoogleCCSTest\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.1.3.1\lib\net35-Client\NodaTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NodaTime.Serialization.JsonNet, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.Serialization.JsonNet.1.3.1\lib\net35-Client\NodaTime.Serialization.JsonNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NodaTime.Testing, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.Testing.1.3.1\lib\net35-Client\NodaTime.Testing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\ActionBase.cs" />
+    <Compile Include="Actions\Decisions\CancelEventAction.cs" />
+    <Compile Include="Actions\Decisions\RegistrateMobileClientAction.cs" />
+    <Compile Include="Actions\Decisions\ReRegisterMobileClientAction.cs" />
+    <Compile Include="Actions\IAction.cs" />
+    <Compile Include="Actions\PairedActionValueBase.cs" />
+    <Compile Include="Actions\Parsing\ParseDataContentsAction.cs" />
+    <Compile Include="Actions\Parsing\ParseMessageTypeAction.cs" />
+    <Compile Include="Actions\Parsing\ParseSenderTokenAction.cs" />
+    <Compile Include="Communications\IConnectionClient.cs" />
+    <Compile Include="Communications\IXmppConnectionClient.cs" />
+    <Compile Include="Communications\XmppConnectionClient.cs" />
+    <Compile Include="Models\ParsedGcmMessageStateHolder.cs" />
+    <Compile Include="Models\XmppConnectionSettings.cs" />
+    <Compile Include="Models\DataContents.cs" />
+    <Compile Include="Models\DataMessage.cs" />
+    <Compile Include="Models\GcmMessageStateHolder.cs" />
+    <Compile Include="Models\MessageStateHolderBase.cs" />
+    <Compile Include="Models\NotificationContents.cs" />
+    <Compile Include="Models\NotificationMessage.cs" />
+    <Compile Include="Models\StandardMessage.cs" />
+    <Compile Include="Processing\GcmMessageDecisionProcessor.cs" />
+    <Compile Include="Processing\GcmMessageProcessor.cs" />
+    <Compile Include="Processing\ActionProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xmpp\Contract Resolvers\UnderscoreBetweenMultiWordIdentifierPropertyContractResolver.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="Xmpp\Extensions.cs" />
+    <Compile Include="Xmpp\Protocol.cs" />
+    <Compile Include="Xmpp\Mechanisms\GoogleXmppPlainMechanism.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMS Configuration Data\CMS Configuration Data.csproj">
+      <Project>{fcac33ed-3c37-43f6-ac95-1d66f81fa686}</Project>
+      <Name>CMS Configuration Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMS Library\CMS Library.csproj">
+      <Project>{fce327e1-2473-467a-95d1-c103e2df2f7f}</Project>
+      <Name>CMS Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMS Shared Library\CMS Shared Library.csproj">
+      <Project>{aa31ec1a-ac3f-4563-929b-768b715b898c}</Project>
+      <Name>CMS Shared Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Registration\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

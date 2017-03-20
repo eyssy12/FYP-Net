@@ -1,0 +1,18 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\CMS.Library.dll.config
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\CMS.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\CMS.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Castle.Core.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Ninject.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.Serialization.JsonNet.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.Testing.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Castle.Core.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\Ninject.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.Serialization.JsonNet.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\bin\Debug\NodaTime.Testing.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\obj\Debug\CMS.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\obj\Debug\CMS.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Library\obj\Debug\CMS Library.csprojResolveAssemblyReference.cache

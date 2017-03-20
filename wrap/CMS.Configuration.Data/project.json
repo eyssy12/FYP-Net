@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net461": {
+      "wrappedProject": "../../CMS Configuration Data/CMS Configuration Data.csproj",
+      "bin": {
+        "assembly": "../../CMS Configuration Data/obj/{configuration}/CMS.Configuration.Data.dll",
+        "pdb": "../../CMS Configuration Data/obj/{configuration}/CMS.Configuration.Data.pdb"
+      },
+      "dependencies": {
+        "Castle.Core": "3.2.0",
+        "EntityFramework": "6.1.3",
+        "Newtonsoft.Json": "8.0.2",
+        "NodaTime": "1.3.1",
+        "NodaTime.Serialization.JsonNet": "1.3.1",
+        "NodaTime.Testing": "1.3.1",
+        "CMS.Library": "1.0.0-*",
+        "CMS.Shared.Library": "1.0.0-*",
+        "MySql.Data": "1.0.0-*",
+        "MySql.Data.Entity.EF6": "1.0.0-*"
+      }
+    }
+  }
+}

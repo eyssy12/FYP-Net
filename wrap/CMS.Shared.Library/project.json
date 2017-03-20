@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net461": {
+      "wrappedProject": "../../CMS Shared Library/CMS Shared Library.csproj",
+      "bin": {
+        "assembly": "../../CMS Shared Library/obj/{configuration}/CMS.Shared.Library.dll",
+        "pdb": "../../CMS Shared Library/obj/{configuration}/CMS.Shared.Library.pdb"
+      }
+    }
+  }
+}

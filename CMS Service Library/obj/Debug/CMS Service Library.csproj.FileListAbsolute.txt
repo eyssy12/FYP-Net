@@ -1,0 +1,18 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\CMS.Service.Library.dll.config
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\CMS.Service.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\CMS.Service.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\CMS.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\Ninject.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.Serialization.JsonNet.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.Testing.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\CMS.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\Ninject.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.Serialization.JsonNet.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\bin\Debug\NodaTime.Testing.xml
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\obj\Debug\CMS Service Library.csprojResolveAssemblyReference.cache
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\obj\Debug\CMS.Service.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Service Library\obj\Debug\CMS.Service.Library.pdb

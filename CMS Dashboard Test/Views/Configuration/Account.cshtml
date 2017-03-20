@@ -1,0 +1,208 @@
+﻿@{
+    ViewData["Title"] = "Configuration - Account";
+    ViewBag.NavigationPage = "Configuration";
+    ViewBag.NavigationPageTreeView = "Account";
+}
+
+
+<div class="box" ng-controller="AccountController">
+    <!-- /.box-header -->
+    <div class="box-header with-border">
+        <button type="button" class="btn btn-box-tool" ng-click="onGet()">
+            <i class="fa fa-2x fa-refresh" data-toggle="tooltip" data-original-title="Refresh"></i>
+        </button>
+        <h2 class="box-title">User Accounts</h2>
+    </div>
+    <!-- form start -->
+    <div class="box-body">
+        <div class="form-group">
+            <form name="accountForm" novalidate="novalidate">
+                <button class="btn btn-flat btn-primary btn-flat" data-toggle="modal" data-target="#accountModal" ng-click="prepareModal('Create', null)">
+                    <i class="fa fa-plus"></i>
+                    Create
+                </button>
+                <button class="btn btn-warning btn-flat" ng-model="selectedForDeletion" ng-disabled="!selectedForDeletion"
+                        ng-bootbox-confirm="Are you sure you want to delete the selected accont(s)?"
+                        ng-bootbox-confirm-action="removeAccounts()">
+                    <i class="fa fa-remove"></i>
+                    Delete
+                </button>
+                <div ng-switch="statusMessage.type">
+                    <div class="text-success" ng-switch-when="Success">
+                        <h3>
+                            {{ statusMessage.message }}
+                        </h3>
+                    </div>
+                    <div class="text-warning" ng-switch-when="Error">
+                        <h3>
+                            {{ statusMessage.message }}
+                        </h3>
+                    </div>
+                    <div ng-switch-default>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="form-group">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 50px">#</th>
+                        <th style="width: 40px">
+                            <input type="checkbox" class="icheckbox_flat-green" data-toggle="tooltip" data-original-title="Select All" ng-model="selectedAll" ng-click="selectAll()">
+                        </th>
+                        <th style="width: 80px"></th>
+                        <th style="width: 50px">Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Person</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="applicationUser in applicationUsers | filter:sidebar.searchText">
+                    <td>
+                        {{ $index + 1 }}
+                    </td>
+                    <td>
+                        <input type="checkbox" class="icheckbox_flat-green" ng-model="user.isSelected" ng-click="checkSelected()">
+                    </td>
+                    <td>
+                        <div class="box-tools pull-left">
+                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#accountModal" ng-click="prepareModal('Modify', applicationUser)">
+                                <i class="fa fa-edit" data-toggle="tooltip" data-original-title="Modify"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-original-title="Delete" ng-click="onDelete(applicationUser, $index)">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </div>
+                    </td>
+                    <td>
+                        {{ applicationUser.Id }}
+                    </td>
+                    <td>
+                        {{ applicationUser.UserName }}
+                    </td>
+                    <td>
+                        {{ applicationUser.Email }}
+                    </td>
+                    <td>
+                        {{ applicationUser.Person == undefined ? "Person has not been assigned an account" : getUserPersonName(applicationUser.Person) }}
+                    </td>
+                    <td>
+                        {{ getUserRoleAsString(applicationUser.UserRole) }}
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-flat btn-primary btn-flat" ng-click="onGet()">Get Accounts</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <form name="actionForm" class="form-horizontal" ng-submit="onCreateModifyFormSubmit(actionForm)">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Account - {{ action }}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="control-label">Username</label>
+                                        <div ng-switch="action">
+                                            <div ng-switch-when="Create">
+                                                <input type="text" class="form-control" placeholder="Username" ng-model="tempAccount.UserName" ng-minlength="6" ng-required="true">
+                                            </div>
+                                            <div ng-switch-when="Modify">
+                                                <input type="text" class="form-control" placeholder="Username" ng-model="tempAccount.UserName" ng-value="selectedAccount.UserName" ng-minlength="6" ng-required="true">
+                                            </div>
+                                            <div ng-switch-default>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Email</label>
+                                        <div ng-switch="action">
+                                            <div ng-switch-when="Create">
+                                                <input type="email" class="form-control" placeholder="Email" ng-model="tempAccount.Email" ng-minlength="6" ng-required="true">
+                                            </div>
+                                            <div ng-switch-when="Modify">
+                                                <input type="email" class="form-control" placeholder="Email" ng-model="tempAccount.Email" ng-value="selectedAccount.Email" ng-minlength="6" ng-required="true">
+                                            </div>
+                                            <div ng-switch-default>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Password (Optional - Will be autogenerated if none is provided)</label>
+                                        <div ng-switch="action">
+                                            <div ng-switch-when="Create">
+                                                <input type="text" class="form-control" placeholder="Password (Optional)" ng-model="tempAccount.Password">
+                                            </div>
+                                            <div ng-switch-when="Modify">
+                                                <input type="text" class="form-control" placeholder="Password (Optional)" ng-model="tempAccount.Password" ng-value="selectedAccount.Password">
+                                            </div>
+                                            <div ng-switch-default>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Person</label>
+                                        <div>
+                                            <select class="form-control" ng-required="true" ng-model="tempAccount.Person" ng-options="getUserPersonName(person) for person in persons track by person.Id"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">User Role</label>
+                                        <div>
+                                            <select class="form-control" ng-required="true" ng-model="tempAccount.UserRole" ng-options="role.Id as role.Value for role in roles"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="modal-footer">
+                                <div ng-switch="action">
+                                    <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal" ng-click="resetForm(actionForm)">Discard</button>
+                                    <div ng-switch-when="Create">
+                                        <button type="submit" class="btn btn-flat btn-primary">Create</button>
+                                    </div>
+                                    <div ng-switch-when="Modify">
+                                        <button type="submit" class="btn btn-flat btn-primary">Modify</button>
+                                    </div>
+                                    <div ng-switch-default>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal -->
+    </div>
+    <div class="overlay" ng-show="submitting">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section Scripts{
+
+    <!-- iCheck -->
+    <script type="text/javascript" src="~/lib/iCheck/icheck.min.js"></script>
+    <!-- Angular custom -->
+
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/EnumerationsService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/PersonService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/AccountService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Controllers/AccountController.js"></script> <!-- controllers taking in services require to be the last in the order -->
+
+}

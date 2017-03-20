@@ -1,0 +1,41 @@
+﻿@using System.Security.Claims
+
+@if (User.IsSignedIn())
+{
+    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @User.GetUserName()</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link ladda-button" data-style="zoom-in">
+                    <span class="ladda-label">Log Off</span>
+                    <span class="ladda-spinner"></span>
+                </button>
+            </li>
+            @if(User.IsInRole("Admin"))
+            {
+                <li>
+                    <a href="#" title="Admin">Admin - @User.Identities.Count()</a>
+                </li>
+
+            }
+            else
+            {
+                <li>
+                    <span class="navbar-btn ">You're not an admin</span>
+                </li>
+
+            }
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a asp-controller="Account" asp-action="Login">
+            </a>
+        </li>
+    </ul>
+}

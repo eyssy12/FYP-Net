@@ -1,0 +1,6 @@
+﻿{
+  "Data": {
+    "ConnectionStringFree": "SERVER=db4free.net;DATABASE=fypcms;User ID=fypcms_user;PASSWORD=Boberts_1q2w3e;",
+    "ConnectionStringAzure": "Server=tcp:fypcms.database.windows.net,1433;Database=fypcms_db;User ID=fypcms_user@fypcms;Password=Fyp_Cms_1q2w3e62878;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  }
+}

@@ -1,0 +1,5 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Shared Library\bin\Debug\CMS.Shared.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Shared Library\bin\Debug\CMS.Shared.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Shared Library\obj\Debug\CMS.Shared.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Shared Library\obj\Debug\CMS.Shared.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Shared Library\obj\Debug\CMS Shared Library.csprojResolveAssemblyReference.cache

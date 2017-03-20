@@ -1,0 +1,53 @@
+﻿.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+    /* pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width: inherit;
+    height: inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
+
+.form-control-labeless-sequence {
+    margin-bottom: 10px;
+}
+
+.input-underline {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+/*  this fixes the issue with the googles autocomplete to be behind bootstraps modal. Bootstrap's sits at 1000 z-index by default */
+.pac-container {
+    z-index: 1051 !important;
+}
+
+.sidebar-text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.fill
+{
+    min-height: 100%;
+    height: 100%;
+}

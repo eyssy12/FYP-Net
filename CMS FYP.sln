@@ -1,0 +1,257 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{DE9A7D2E-9EB0-4522-ADCB-3F05E5942ACD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5FA23506-B561-4C57-AB8A-33794CEEBD1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B7D0BAA3-50B1-46F5-8FE8-3E9EA6A4A639}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{552F5667-A41B-429B-BE35-12325C3DBBFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CC239EEF-F8E3-4748-902C-2F1FD65F1E88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CMS", "CMS", "{F8F66F2B-097C-4508-B901-F902CA525236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Messaging Server Library", "CMS Messaging Server Library\CMS Messaging Server Library.csproj", "{56E80469-25FD-4413-8E0F-1F19FFFDA771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Messaging Server Configuration Library", "CMS Messaging Server Configuration Library\CMS Messaging Server Configuration Library.csproj", "{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Library", "CMS Library\CMS Library.csproj", "{FCE327E1-2473-467A-95D1-C103E2DF2F7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Processing", "Processing", "{D5862E96-86DD-4721-8749-BBDEF040C61E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Happy Path", "Happy Path", "{28A314DE-25B0-4437-AB6C-C58F0F4E422F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Messaging Processor", "CMS Message Processor\CMS Messaging Processor.csproj", "{A86D6A75-2271-4121-818F-F3599CB49668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Service", "CMS Service\CMS Service.csproj", "{156FEE21-C061-4C6B-8989-69FFBAD8B522}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{001AB24E-121E-44C3-8655-F96533D6FC30}"
+	ProjectSection(SolutionItems) = preProject
+		Default.runsettings = Default.runsettings
+		CMS Dashboard\global.json = CMS Dashboard\global.json
+		CMS Web Configuration Data\global.json = CMS Web Configuration Data\global.json
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Configuration Data", "CMS Configuration Data\CMS Configuration Data.csproj", "{FCAC33ED-3C37-43F6-AC95-1D66F81FA686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Service Library", "CMS Service Library\CMS Service Library.csproj", "{0A82FA29-B052-4526-AED0-66236D0F9724}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rest API", "Rest API", "{F616BEBD-7F80-4F76-968B-74CF08011003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dashboard", "Dashboard", "{2F3C1942-8E83-4FD5-A95B-A673CB2781F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EE484F96-2F7E-462B-B6A9-007D8F97BDF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{77AB6E33-F3B5-40A5-B28E-BBCED34EE426}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FF09E4A9-6842-4A26-9FCD-67B2B9101D5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C953F050-FBAE-45F3-8327-21955940F23C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Entity Framework Data Library", "CMS Entity Framework Data Library\CMS Entity Framework Data Library.csproj", "{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Configuration Library", "CMS Configuration Library\CMS Configuration Library.csproj", "{B447A706-FA49-4837-BCEE-991065D5902B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Core Configuration Library", "CMS Core Configuration Library\CMS Core Configuration Library.csproj", "{896A77C3-8570-48BC-8432-D704AC6B8421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Shared Library", "CMS Shared Library\CMS Shared Library.csproj", "{AA31EC1A-AC3F-4563-929B-768B715B898C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8EF071F6-6A59-41C8-A1AB-4DC1875A5989}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CMS Web Configuration Data", "CMS Web Configuration Data\CMS Web Configuration Data.xproj", "{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestApi", "TestApi\TestApi.xproj", "{08C7B610-E860-48A3-8713-1E8BEA017925}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CMS Dashboard Test", "CMS Dashboard Test\CMS Dashboard Test.xproj", "{A3EE8568-BD66-4875-99C3-FC1EFB817422}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8414AF49-2853-4B0C-8D95-9FBE2A47E7B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E792C85E-C67E-4A84-880C-FA51E452E8B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1D2949E6-5A09-4E01-B045-9E6B94AD1649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Messaging Server Library Tests", "CMS Messaging Server Library Tests\CMS Messaging Server Library Tests.csproj", "{A58A837D-729E-4C9D-ABA0-1F868F39E4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Dashboard Tests", "CMS Dashboard Tests\CMS Dashboard Tests.csproj", "{29837B5A-6473-4EFA-A003-58AF199DE9B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56E80469-25FD-4413-8E0F-1F19FFFDA771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E80469-25FD-4413-8E0F-1F19FFFDA771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E80469-25FD-4413-8E0F-1F19FFFDA771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E80469-25FD-4413-8E0F-1F19FFFDA771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE327E1-2473-467A-95D1-C103E2DF2F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE327E1-2473-467A-95D1-C103E2DF2F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE327E1-2473-467A-95D1-C103E2DF2F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE327E1-2473-467A-95D1-C103E2DF2F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86D6A75-2271-4121-818F-F3599CB49668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86D6A75-2271-4121-818F-F3599CB49668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86D6A75-2271-4121-818F-F3599CB49668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86D6A75-2271-4121-818F-F3599CB49668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156FEE21-C061-4C6B-8989-69FFBAD8B522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156FEE21-C061-4C6B-8989-69FFBAD8B522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156FEE21-C061-4C6B-8989-69FFBAD8B522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156FEE21-C061-4C6B-8989-69FFBAD8B522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAC33ED-3C37-43F6-AC95-1D66F81FA686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAC33ED-3C37-43F6-AC95-1D66F81FA686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAC33ED-3C37-43F6-AC95-1D66F81FA686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAC33ED-3C37-43F6-AC95-1D66F81FA686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A82FA29-B052-4526-AED0-66236D0F9724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A82FA29-B052-4526-AED0-66236D0F9724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A82FA29-B052-4526-AED0-66236D0F9724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A82FA29-B052-4526-AED0-66236D0F9724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B447A706-FA49-4837-BCEE-991065D5902B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B447A706-FA49-4837-BCEE-991065D5902B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B447A706-FA49-4837-BCEE-991065D5902B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B447A706-FA49-4837-BCEE-991065D5902B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896A77C3-8570-48BC-8432-D704AC6B8421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896A77C3-8570-48BC-8432-D704AC6B8421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896A77C3-8570-48BC-8432-D704AC6B8421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896A77C3-8570-48BC-8432-D704AC6B8421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA31EC1A-AC3F-4563-929B-768B715B898C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA31EC1A-AC3F-4563-929B-768B715B898C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA31EC1A-AC3F-4563-929B-768B715B898C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA31EC1A-AC3F-4563-929B-768B715B898C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C7B610-E860-48A3-8713-1E8BEA017925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C7B610-E860-48A3-8713-1E8BEA017925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C7B610-E860-48A3-8713-1E8BEA017925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C7B610-E860-48A3-8713-1E8BEA017925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3EE8568-BD66-4875-99C3-FC1EFB817422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3EE8568-BD66-4875-99C3-FC1EFB817422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3EE8568-BD66-4875-99C3-FC1EFB817422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3EE8568-BD66-4875-99C3-FC1EFB817422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58A837D-729E-4C9D-ABA0-1F868F39E4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A837D-729E-4C9D-ABA0-1F868F39E4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58A837D-729E-4C9D-ABA0-1F868F39E4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58A837D-729E-4C9D-ABA0-1F868F39E4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29837B5A-6473-4EFA-A003-58AF199DE9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29837B5A-6473-4EFA-A003-58AF199DE9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29837B5A-6473-4EFA-A003-58AF199DE9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29837B5A-6473-4EFA-A003-58AF199DE9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{552F5667-A41B-429B-BE35-12325C3DBBFD} = {DE9A7D2E-9EB0-4522-ADCB-3F05E5942ACD}
+		{F8F66F2B-097C-4508-B901-F902CA525236} = {DE9A7D2E-9EB0-4522-ADCB-3F05E5942ACD}
+		{56E80469-25FD-4413-8E0F-1F19FFFDA771} = {F8F66F2B-097C-4508-B901-F902CA525236}
+		{6BB5B66A-A5E4-4D9F-BB3F-4F901A788376} = {F8F66F2B-097C-4508-B901-F902CA525236}
+		{FCE327E1-2473-467A-95D1-C103E2DF2F7F} = {552F5667-A41B-429B-BE35-12325C3DBBFD}
+		{28A314DE-25B0-4437-AB6C-C58F0F4E422F} = {D5862E96-86DD-4721-8749-BBDEF040C61E}
+		{A86D6A75-2271-4121-818F-F3599CB49668} = {28A314DE-25B0-4437-AB6C-C58F0F4E422F}
+		{156FEE21-C061-4C6B-8989-69FFBAD8B522} = {5FA23506-B561-4C57-AB8A-33794CEEBD1B}
+		{FCAC33ED-3C37-43F6-AC95-1D66F81FA686} = {CC239EEF-F8E3-4748-902C-2F1FD65F1E88}
+		{0A82FA29-B052-4526-AED0-66236D0F9724} = {552F5667-A41B-429B-BE35-12325C3DBBFD}
+		{F616BEBD-7F80-4F76-968B-74CF08011003} = {B7D0BAA3-50B1-46F5-8FE8-3E9EA6A4A639}
+		{2F3C1942-8E83-4FD5-A95B-A673CB2781F2} = {B7D0BAA3-50B1-46F5-8FE8-3E9EA6A4A639}
+		{EE484F96-2F7E-462B-B6A9-007D8F97BDF6} = {F8F66F2B-097C-4508-B901-F902CA525236}
+		{77AB6E33-F3B5-40A5-B28E-BBCED34EE426} = {552F5667-A41B-429B-BE35-12325C3DBBFD}
+		{FF09E4A9-6842-4A26-9FCD-67B2B9101D5C} = {28A314DE-25B0-4437-AB6C-C58F0F4E422F}
+		{C953F050-FBAE-45F3-8327-21955940F23C} = {CC239EEF-F8E3-4748-902C-2F1FD65F1E88}
+		{21AE9C00-EC3B-462D-AAD7-23FD8D5B1402} = {552F5667-A41B-429B-BE35-12325C3DBBFD}
+		{B447A706-FA49-4837-BCEE-991065D5902B} = {F8F66F2B-097C-4508-B901-F902CA525236}
+		{896A77C3-8570-48BC-8432-D704AC6B8421} = {552F5667-A41B-429B-BE35-12325C3DBBFD}
+		{AA31EC1A-AC3F-4563-929B-768B715B898C} = {F8F66F2B-097C-4508-B901-F902CA525236}
+		{8EF071F6-6A59-41C8-A1AB-4DC1875A5989} = {B7D0BAA3-50B1-46F5-8FE8-3E9EA6A4A639}
+		{FC5B3ACD-04D3-4DEC-BE81-CEE4F524B160} = {8EF071F6-6A59-41C8-A1AB-4DC1875A5989}
+		{08C7B610-E860-48A3-8713-1E8BEA017925} = {F616BEBD-7F80-4F76-968B-74CF08011003}
+		{A3EE8568-BD66-4875-99C3-FC1EFB817422} = {2F3C1942-8E83-4FD5-A95B-A673CB2781F2}
+		{8414AF49-2853-4B0C-8D95-9FBE2A47E7B3} = {8EF071F6-6A59-41C8-A1AB-4DC1875A5989}
+		{E792C85E-C67E-4A84-880C-FA51E452E8B6} = {2F3C1942-8E83-4FD5-A95B-A673CB2781F2}
+		{1D2949E6-5A09-4E01-B045-9E6B94AD1649} = {F616BEBD-7F80-4F76-968B-74CF08011003}
+		{A58A837D-729E-4C9D-ABA0-1F868F39E4BD} = {EE484F96-2F7E-462B-B6A9-007D8F97BDF6}
+		{29837B5A-6473-4EFA-A003-58AF199DE9B7} = {E792C85E-C67E-4A84-880C-FA51E452E8B6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 17
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://robzagora.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CMS\u0020Messaging\u0020Server\u0020Library\\CMS\u0020Messaging\u0020Server\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName1 = CMS\u0020FYP.sln
+		SccProjectName1 = CMS\u0020Messaging\u0020Server\u0020Library
+		SccLocalPath1 = CMS\u0020Messaging\u0020Server\u0020Library
+		SccProjectUniqueName2 = CMS\u0020Messaging\u0020Server\u0020Configuration\u0020Library\\CMS\u0020Messaging\u0020Server\u0020Configuration\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName2 = CMS\u0020FYP.sln
+		SccProjectName2 = CMS\u0020Messaging\u0020Server\u0020Configuration\u0020Library
+		SccLocalPath2 = CMS\u0020Messaging\u0020Server\u0020Configuration\u0020Library
+		SccProjectUniqueName3 = CMS\u0020Library\\CMS\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName3 = CMS\u0020FYP.sln
+		SccProjectName3 = CMS\u0020Library
+		SccLocalPath3 = CMS\u0020Library
+		SccProjectUniqueName4 = CMS\u0020Message\u0020Processor\\CMS\u0020Messaging\u0020Processor.csproj
+		SccProjectTopLevelParentUniqueName4 = CMS\u0020FYP.sln
+		SccProjectName4 = CMS\u0020Message\u0020Processor
+		SccLocalPath4 = CMS\u0020Message\u0020Processor
+		SccProjectUniqueName5 = CMS\u0020Service\\CMS\u0020Service.csproj
+		SccProjectTopLevelParentUniqueName5 = CMS\u0020FYP.sln
+		SccProjectName5 = CMS\u0020Service
+		SccLocalPath5 = CMS\u0020Service
+		SccProjectUniqueName6 = CMS\u0020Configuration\u0020Data\\CMS\u0020Configuration\u0020Data.csproj
+		SccProjectTopLevelParentUniqueName6 = CMS\u0020FYP.sln
+		SccProjectName6 = CMS\u0020Configuration\u0020Data
+		SccLocalPath6 = CMS\u0020Configuration\u0020Data
+		SccProjectUniqueName7 = CMS\u0020Service\u0020Library\\CMS\u0020Service\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName7 = CMS\u0020FYP.sln
+		SccProjectName7 = CMS\u0020Service\u0020Library
+		SccLocalPath7 = CMS\u0020Service\u0020Library
+		SccProjectUniqueName8 = CMS\u0020Entity\u0020Framework\u0020Data\u0020Library\\CMS\u0020Entity\u0020Framework\u0020Data\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName8 = CMS\u0020FYP.sln
+		SccProjectName8 = CMS\u0020Entity\u0020Framework\u0020Data\u0020Library
+		SccLocalPath8 = CMS\u0020Entity\u0020Framework\u0020Data\u0020Library
+		SccProjectUniqueName9 = CMS\u0020Configuration\u0020Library\\CMS\u0020Configuration\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName9 = CMS\u0020FYP.sln
+		SccProjectName9 = CMS\u0020Configuration\u0020Library
+		SccLocalPath9 = CMS\u0020Configuration\u0020Library
+		SccProjectUniqueName10 = CMS\u0020Core\u0020Configuration\u0020Library\\CMS\u0020Core\u0020Configuration\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName10 = CMS\u0020FYP.sln
+		SccProjectName10 = CMS\u0020Core\u0020Configuration\u0020Library
+		SccLocalPath10 = CMS\u0020Core\u0020Configuration\u0020Library
+		SccProjectUniqueName11 = CMS\u0020Shared\u0020Library\\CMS\u0020Shared\u0020Library.csproj
+		SccProjectTopLevelParentUniqueName11 = CMS\u0020FYP.sln
+		SccProjectName11 = CMS\u0020Shared\u0020Library
+		SccLocalPath11 = CMS\u0020Shared\u0020Library
+		SccProjectUniqueName12 = CMS\u0020Web\u0020Configuration\u0020Data\\CMS\u0020Web\u0020Configuration\u0020Data.xproj
+		SccProjectTopLevelParentUniqueName12 = CMS\u0020FYP.sln
+		SccProjectName12 = CMS\u0020Web\u0020Configuration\u0020Data
+		SccLocalPath12 = CMS\u0020Web\u0020Configuration\u0020Data
+		SccProjectUniqueName13 = TestApi\\TestApi.xproj
+		SccProjectTopLevelParentUniqueName13 = CMS\u0020FYP.sln
+		SccProjectName13 = TestApi
+		SccLocalPath13 = TestApi
+		SccProjectUniqueName14 = CMS\u0020Dashboard\u0020Test\\CMS\u0020Dashboard\u0020Test.xproj
+		SccProjectTopLevelParentUniqueName14 = CMS\u0020FYP.sln
+		SccProjectName14 = CMS\u0020Dashboard\u0020Test
+		SccLocalPath14 = CMS\u0020Dashboard\u0020Test
+		SccProjectUniqueName15 = CMS\u0020Messaging\u0020Server\u0020Library\u0020Tests\\CMS\u0020Messaging\u0020Server\u0020Library\u0020Tests.csproj
+		SccProjectTopLevelParentUniqueName15 = CMS\u0020FYP.sln
+		SccProjectName15 = CMS\u0020Messaging\u0020Server\u0020Library\u0020Tests
+		SccLocalPath15 = CMS\u0020Messaging\u0020Server\u0020Library\u0020Tests
+		SccProjectUniqueName16 = CMS\u0020Dashboard\u0020Tests\\CMS\u0020Dashboard\u0020Tests.csproj
+		SccProjectTopLevelParentUniqueName16 = CMS\u0020FYP.sln
+		SccProjectName16 = CMS\u0020Dashboard\u0020Tests
+		SccLocalPath16 = CMS\u0020Dashboard\u0020Tests
+	EndGlobalSection
+EndGlobal

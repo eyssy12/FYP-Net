@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "CMS - Timetables";
+    ViewBag.NavigationPage = "Configuration";
+    ViewBag.NavigationPageTreeView = "Timetables";
+}
+<div class="row" ng-controller="CalendarController">
+    <div class="col-md-3">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Controls</h3>
+                <ul class="nav navbar-nav pull-right">
+                    <li ng-class="{'disabled': existingTimetable == undefined || changeAmount == 0}">
+                        <a role="button" href="#" data-toggle="tooltip" data-original-title="Revert Changes" ng-click="revertChanges()">
+                            <i class="fa fa-2x fa-refresh"></i>
+                        </a>
+                    </li>
+                    <li ng-class="{'disabled': existingTimetable == undefined}">
+                        <a role="button" href="#" data-toggle="tooltip" data-original-title="Delete Timetable" 
+                           ng-bootbox-confirm="Are you sure you want to delete the timetable?"
+                           ng-bootbox-confirm-action="deleteTimetable()">
+                            <i class="fa fa-2x fa-remove"></i>
+                        </a>
+                    </li>
+                    <li ng-class="{'disabled': changeAmount == 0}">
+                        <a role="button" href="#" data-toggle="tooltip" data-original-title="{{ saveButtonTooltipText }}" 
+                           ng-bootbox-confirm="Confirm submission"
+                           ng-bootbox-confirm-action="saveChanges()">
+                            <i class="fa fa-2x fa-save"></i>
+                            <span class="label label-primary">{{ changeAmount }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Name/Identifier</label>
+                    <input type="text" class="form-control" placeholder="Timetable Name" ng-model="timetableName">
+                    <span ng-show="invalidTimetable" class="text-red">Timetable needs a name</span>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <div>
+                        <select ng-disabled="loadingCourses == true" class="form-control" ng-model="selectedCourseForSemesters" ng-change="prepareSemestersForCourse()" ng-options="course.Name for course in courses track by course.Id"></select>
+                    </div>
+                </div>
+                <div ng-show="selectedCourseForSemesters != undefined">
+
+                    <div class="form-group">
+                        <label for="classSelectOptions">Semester</label>
+                        <select id="classSelectOptions" class="form-control" ng-model="selectedSemester" ng-change="prepareClassesForSemester()" ng-options="semester as formatSemesterOptionsName(semester) for semester in courseSemesters | orderBy:'-Number':true"></select>
+                    </div>
+                </div>
+                <div ng-show="selectedSemester != undefined">
+                    <div class="form-group">
+                        <label for="classSelectOptions">Class</label>
+                        <select id="classSelectOptions" class="form-control" ng-model="selectedClass" ng-change="prepareModules()" ng-options="class as formatClassOptionsName(class) for class in semesterClasses"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay" ng-show="loading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div>
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h4 class="box-title">Available Modules</h4>
+            </div>
+            <div class="box-body">
+                <!-- the events -->
+                <div id="external-events">
+                    <div class="external-event bg-{{event.backgroundColorDescriptive}} ui-draggable ui-draggable-handle" style="position: relative;" ng-repeat="event in externalEvents" repeat-done="initExternalEvents()" on-repeat-last="onRepeatLast()">
+                        {{ event.title }}
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div><!-- /. box -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h4 class="box-title">Selected Calendar Event</h4>
+                <button type="submit" ng-disabled="selectedEvent == undefined" 
+                        class="btn btn-group-sm btn-warning pull-right" 
+                        ng-click="removeEventFromCalendar()">Remove</button>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <span class="text-muted"> {{ getFormattedSelectedEventTime() }}</span>
+                    <h3>{{ getFormattedSelectedEventName() }}</h3>
+                </div>
+                <div ng-show="selectedEvent" class="form-group">
+                </div>
+            </div>
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div>
+        <div id="moduleColourPicker" class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Module Colour Picker</h3>
+            </div>
+            <div class="box-body">
+                <div class="btn-group">
+                    <ul class="fc-color-picker" id="color-chooser">
+                        <li ng-repeat="colour in colours">
+                            <a class="text-{{colour.descriptive}}" href="#" ng-click="setSelectedColour(colour)">
+                                <i class="fa fa-square"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <div class="form-group">
+                    <select class="form-control" ng-model="newExternalEventTemp" ng-options="event as event.title for event in externalEvents"></select>
+                </div>
+            </div>
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div>
+    </div><!-- /.col -->
+    <div class="col-md-9">
+        <div class="box box-primary">
+            <div class="box-body no-padding">
+                <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="calendar"></div>
+            </div><!-- /.box-body -->
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div><!-- /. box -->
+    </div><!-- /.col -->
+</div>
+@section StyleSheets{
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.print.css" media="print">
+}
+@section Scripts {
+    <!-- jQuert UI -->
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <!-- Moment.js -->
+    <script type="text/javascript" src="~/lib/momentjs/min/moment.min.js"></script>
+    <script type="text/javascript" src="~/lib/fullcalendar/dist/fullcalendar.min.js"></script>
+    <!-- Angular Services -->
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/EnumerationsService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/ModuleService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/ClassService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/SemesterService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/CourseService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/TimetableService.js"></script>
+    <!-- Angular Controllers -->
+    <script type="text/javascript" src="~/js/Angular/Controllers/CalendarController.js"></script>
+}

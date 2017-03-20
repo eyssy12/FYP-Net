@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net461": {
+      "bin": {
+        "assembly": "../../../../../../../../Program Files (x86)/MySQL/MySQL Connector Net 6.9.8/Assemblies/v4.5/MySql.Data.dll"
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "CMS - Lecturer Timetables";
+    ViewBag.NavigationPage = "Timetables";
+}
+
+<div class="row" ng-controller="TimetableController">
+    <div class="col-md-2">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <div class="form-group">Actions for selected events</div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <button ng-disabled="selectedForCancelation.length < 1" class="btn btn-group-sm btn-warning" 
+                            ng-bootbox-confirm="Are you sure you want to cancel these classes?"
+                            ng-bootbox-confirm-action="cancelClasses()">
+                        Cancel Event
+                    </button>
+                </div>
+                <div class="form-group" ng-show="selectedForCancelation.length == 0">
+                    No events selected
+                </div>
+                <div class="form-group" ng-repeat="cancellation in selectedForCancelation">
+                    <div class="text-muted"> {{ cancellation.startEndTimeFormatted }}</div>
+                    <div class="text-bold"> {{ cancellation.title }} </div>
+                </div>
+            </div>
+            <div class="overlay" ng-show="loading">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="box box-primary">
+            <div class="box-body no-padding">
+                <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="calendar"></div>
+            </div><!-- /.box-body -->
+            <div class="overlay" ng-show="loading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div><!-- /. box -->
+    </div><!-- /.col -->
+</div>
+
+@section StyleSheets{
+
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.print.css" media="print">
+}
+
+@section Scripts{
+
+    <!-- jQuert UI -->
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <!-- Moment.js -->
+    <script type="text/javascript" src="~/lib/momentjs/min/moment.min.js"></script>
+
+    <script type="text/javascript" src="~/lib/fullcalendar/dist/fullcalendar.min.js"></script>
+
+    <!-- Angular Services -->
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/AccountService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/TimetableService.js"></script>
+
+    <!-- Angular Controllers -->
+    <script type="text/javascript" src="~/js/Angular/Controllers/Lecturer/TimetableController.js"></script>
+
+
+}

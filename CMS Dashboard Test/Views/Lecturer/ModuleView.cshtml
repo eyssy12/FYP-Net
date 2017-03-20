@@ -1,0 +1,61 @@
+﻿@model CMS.Dashboard.Test.Views.Models.ModuleViewViewModel
+
+@{
+    ViewData["Title"] = "CMS - Module View";
+    ViewBag.NavigationPage = "Module View";
+}
+
+<div class="row" ng-controller="ModuleViewController">
+    <div class="col-md-8 col-md-offset-2" ng-init="init('@Model.ModuleId')">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h1 class="text-center text-primary" ng-show="!loading">
+                            <i class="fa fa-book"></i>
+                            {{ module.Name }}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h4 ng-show="!loading" class="text-center">
+                            {{ getModuleTypeAsString(module.ModuleType) }}
+                            <span class="text-muted">module</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!loading" class="box-body">
+                <button type="button" class="btn btn-primary btn-flat pull-left" onclick="location.href='@Url.Action("Modules", "Lecturer")'">
+                    Return to modules
+                </button>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h2 class="text-left">
+                                <i class="fa fa-angle-double-right"></i>
+                                Topics
+                            </h2>
+                        </div>
+                        <div class="form-group">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies felis odio. Ut varius leo id sollicitudin interdum. Aliquam feugiat porttitor condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris laoreet lectus dui, ut malesuada eros varius non. Morbi vehicula fringilla mauris vitae lobortis. Suspendisse ultrices feugiat orci eget iaculis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam dignissim malesuada dolor, a dapibus metus egestas at. Nunc vestibulum malesuada finibus. Curabitur varius lobortis est a pulvinar. Cras vulputate imperdiet est, vel ultrices dui finibus eu. Maecenas et ullamcorper ligula.
+
+                            Nam sed sem nec urna imperdiet auctor eget a eros. Donec aliquet aliquet purus in ornare. Vivamus eu sapien ultrices, sagittis tortor non, egestas nisi. Quisque nunc lectus, tempor ac lobortis a, vulputate lacinia tortor. Vestibulum at ante accumsan, fringilla eros at, pulvinar nisl. Cras laoreet vel lorem consequat pulvinar. Curabitur facilisis facilisis neque, id cursus ante accumsan at. Mauris commodo sodales leo, vel tincidunt mi porttitor vitae. Vivamus quis nulla rutrum, ultrices dolor at, sollicitudin risus. Nam at molestie justo. In porttitor velit id facilisis aliquet. Quisque ornare lacus quis odio mollis, sed pretium lorem euismod. Curabitur eget ex ac enim placerat suscipit at ut est. Aliquam erat volutpat. Pellentesque a tellus pharetra, consectetur leo vel, luctus massa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay" ng-show="loading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/Angular/Services/HttpService.js"></script>
+    <script src="~/js/Angular/Services/EnumerationsService.js"></script>
+    <script src="~/js/Angular/Services/ModuleService.js"></script>
+    <script src="~/js/Angular/Controllers/Lecturer/ModuleViewController.js"></script>
+}

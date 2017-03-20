@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "CMS - My Modules";
+    ViewBag.NavigationPage = "Modules";
+}
+<div class="row" ng-controller="ModulesController">
+    <div class="col-md-3" ng-repeat="module in modules">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    <i class="fa fa-angle-double-right"></i>
+                    <a ng-href="{{ prepareLinkToModuleView(module) }}">{{ module.Name }}</a>
+                </h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="panel-info"> {{ module.Semester.Credits }}</div>
+                    <div class="form-inline">
+                        Students: {{ module.StudentModules.length }}
+                    </div>
+                    <div class="form-inline">
+                        Lecturers: {{ module.LecturerModules.length }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <!-- Angular Services -->
+    <script type="text/javascript" src="~/js/Angular/Services/HttpService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/EnumerationsService.js"></script>
+    <script type="text/javascript" src="~/js/Angular/Services/ModuleService.js"></script>
+    <!-- Angular Controllers -->
+    <script type="text/javascript" src="~/js/Angular/Controllers/Lecturer/ModulesController.js"></script>
+}

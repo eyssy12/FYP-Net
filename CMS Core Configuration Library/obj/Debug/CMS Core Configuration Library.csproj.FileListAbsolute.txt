@@ -1,0 +1,5 @@
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Core Configuration Library\bin\Debug\CMS.Core.Configuration.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Core Configuration Library\bin\Debug\CMS.Core.Configuration.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Core Configuration Library\obj\Debug\CMS.Core.Configuration.Library.dll
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Core Configuration Library\obj\Debug\CMS.Core.Configuration.Library.pdb
+C:\Users\Rob\documents\visual studio 2015\Projects\CMS FYP\CMS Core Configuration Library\obj\Debug\CMS Core Configuration Library.csprojResolveAssemblyReference.cache

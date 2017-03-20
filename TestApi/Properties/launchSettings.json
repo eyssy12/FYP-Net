@@ -1,0 +1,26 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:55629/",
+      "sslPort": 44346
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "environmentVariables": {
+        "Hosting:Environment": "Development"
+      }
+    },
+    "web": {
+      "commandName": "web",
+      "environmentVariables": {
+        "Hosting:Environment": "Development"
+      }
+    }
+  }
+}
