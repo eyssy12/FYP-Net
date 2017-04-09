@@ -1,7 +1,9 @@
 # FYP-Net
 Final year project using the .NET stack. 
 
-Project consists of a Web application and an XMPP messaging server.
+Project consists of:
+* Web application which is a CMS/LMS (Content/Learning Management System) for data configuration
+* XMPP messaging server using GCM (Google Cloud Messaging) to facilitate notification of changes for contextual clients which are related to the changes being made
 
 Technologies used are:
 
