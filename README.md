@@ -9,6 +9,6 @@ Technologies used are:
 * .NET Core Web API.
 * EntityFramework 7
 * OAuth - for client authentication
-* XMPP to communicate with Google Cloud (XMPP is deprecated as of last year)
+* XMPP to communicate with Google Cloud (XMPP is deprecated as of [last year](https://cloud.google.com/appengine/docs/deprecations/xmpp))
 * EF6 - (.NET Framework 4.6.1) XMPP Messaging server is able to connect to the database
 * XUnit - for unit testing
